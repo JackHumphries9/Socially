@@ -1,0 +1,64 @@
+{
+  "name": "socially",
+  "version": "0.5.0",
+  "description": "Group all of your socials in one window.",
+  "main": "./main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist-l": "electron-builder -l"
+  },
+  "keywords": [],
+  "author": "Jack Humphries",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "electron-json-config": "^1.5.3"
+  },
+  "devDependencies": {
+    "electron": "^11.0.0",
+    "electron-builder": "^22.9.1"
+  },
+  "build": {
+    "appId": "com.electron.socially",
+    "productName": "Socially",
+    "mac": {
+      "icon": "./assets/icons/app-icons/mac/icon.icns",
+      "category": "public.app-category.social-networking"
+    },
+    "files": ["./assets/**", "./index.html", "./renderer.js", "package.json", "main.js", "./assets/css.", "./style.css"],
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "icon": "./assets/icons/app-icons/png/64x64.png",
+      "target": [
+        "AppImage",
+        "deb",
+        "snap",
+        "zip"
+      ]
+    },
+    "win": {
+      "icon": "./assets/icons/app-icons/win/icon.ico",
+      "target": "NSIS"
+    }, 
+    "nsis": {
+      "oneClick": false,
+      "createDesktopShortcut": "always",
+      "deleteAppDataOnUninstall": true,
+      "installerIcon": "./assets/icons/app-icons/win/icon.ico"
+    }
+  }
+}
