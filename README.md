@@ -41,6 +41,8 @@ Socially is an application which combines all of your social media DM's and chat
 
 * [Electron](https://github.com/electron/electron)
 * [Electron JSON Config](https://github.com/de-luca/electron-json-config)
+* [Notyf](https://github.com/caroso1222/notyf)
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
