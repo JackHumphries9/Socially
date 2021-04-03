@@ -104,4 +104,4 @@ Project Link: [https://github.com/JackHumphries9/Socially](https://github.com/Ja
 
 Website Link: [https://getsocially.app](https://getsocially.app)
 
-[product-screenshot]: https://getsocially.app/assets/img/champ.png
+[product-screenshot]: https://getsocially.app/assets/img/champnew.png
