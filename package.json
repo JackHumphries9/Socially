@@ -1,0 +1,99 @@
+{
+	"name": "socially",
+	"version": "1.0.0",
+	"private": true,
+	"license": "GPL-3.0-only",
+	"main": "build/electron.js",
+	"author": "Jack Humphries <me@jackhumphries.dev>",
+	"homepage": "./build/",
+	"description": "Group all of your socials into one window!",
+	"dependencies": {
+		"@electron/remote": "^1.1.0",
+		"@fortawesome/fontawesome-svg-core": "^1.2.35",
+		"@fortawesome/free-brands-svg-icons": "^5.15.3",
+		"@fortawesome/free-solid-svg-icons": "^5.15.3",
+		"@fortawesome/react-fontawesome": "^0.1.14",
+		"electron-json-config": "^1.5.3",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-scripts": "^4.0.3"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"react-build": "react-scripts build",
+		"electron": "electron .",
+		"electron-pack": "electron-builder --dir",
+		"dist": "electron-builder",
+		"dist-a": "electron-builder -mwl"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"electron": "^12.0.2",
+		"electron-builder": "^22.10.5"
+	},
+	"build": {
+		"appId": "com.jackhumphries.socially",
+		"productName": "Socially",
+		"files": [
+			"./build/**",
+			"node_modules/**/*"
+		],
+		"directories": {
+			"buildResources": "assets"
+		},
+		"mac": {
+			"icon": "./src/assets/icons/app-icons/mac/icon.icns",
+			"category": "public.app-category.social-networking"
+		},
+		"dmg": {
+			"contents": [
+				{
+					"x": 110,
+					"y": 150
+				},
+				{
+					"x": 240,
+					"y": 150,
+					"type": "link",
+					"path": "/Applications"
+				}
+			]
+		},
+		"linux": {
+			"icon": "./src/assets/icons/app-icons/png/256x256.png",
+			"target": [
+				"AppImage",
+				"deb",
+				"snap",
+				"zip"
+			]
+		},
+		"win": {
+			"icon": "./src/assets/icons/app-icons/win/icon.ico",
+			"target": "NSIS"
+		},
+		"nsis": {
+			"oneClick": false,
+			"createDesktopShortcut": "always",
+			"deleteAppDataOnUninstall": true,
+			"installerIcon": "./src/assets/icons/app-icons/win/icon.ico"
+		}
+	}
+}

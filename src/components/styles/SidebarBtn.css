@@ -1,0 +1,87 @@
+.sidebar a {
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+	color: #f1f1f1;
+	padding-left: 19px;
+}
+
+.sidebar a {
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+	color: #f1f1f1;
+}
+
+a.social-active {
+	color: #fff;
+	font-weight: bold;
+	border-left: solid;
+}
+
+.sidebar-btn {
+	cursor: pointer;
+}
+
+.hidden {
+	display: none;
+}
+
+@keyframes sbizi {
+	0% {
+		transform: scale(0);
+		height: 0px;
+		padding-top: 0px;
+		margin-top: 0px;
+		padding-bottom: 0px;
+		margin-bottom: 0px;
+	}
+	75% {
+		transform: scale(1.15);
+		height: 50px;
+	}
+	100% {
+		transform: scale(1);
+		height: 45px;
+	}
+}
+
+.sidebar-icon-zoomin {
+	animation: sbizi 0.51s forwards;
+}
+
+@keyframes sbizo {
+	from {
+		transform: scale(1);
+		height: 45px;
+	}
+	to {
+		transform: scale(0);
+		height: 0px;
+		padding-top: 0px;
+		margin-top: 0px;
+		padding-bottom: 0px;
+		margin-bottom: 0px;
+		display: none;
+	}
+}
+
+.sidebar-icon-zoomout {
+	animation: sbizo 0.51s forwards;
+}

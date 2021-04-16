@@ -1,0 +1,13 @@
+.first-time-text {
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+@keyframes fadeinsetup {
+from { opacity: 0; transform: translateY(20px); }
+to   { opacity: 1; transform: translateY(0px);}
+}
+
+.fade-in-setup {
+animation: fadeinsetup 1s;
+}
