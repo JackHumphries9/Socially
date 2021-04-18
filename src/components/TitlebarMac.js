@@ -5,6 +5,7 @@ import "./styles/TitlebarMac.css";
 
 export default function Titlebar() {
 	const [isMaximized, setMaximized] = useState(false);
+	const [isFocused, setFocused] = useState(true);
 
 	useEffect(() => {
 		function handleResize() {
@@ -18,6 +19,30 @@ export default function Titlebar() {
 
 		return (_) => {
 			window.removeEventListener("resize", handleResize);
+		};
+	});
+
+	useEffect(() => {
+		function focus() {
+			setFocused(true);
+		}
+
+		window.addEventListener("focus", focus);
+
+		return (_) => {
+			window.removeEventListener("focus", focus);
+		};
+	});
+
+	useEffect(() => {
+		function blur() {
+			setFocused(false);
+		}
+
+		window.addEventListener("blur", blur);
+
+		return (_) => {
+			window.removeEventListener("blur", blur);
 		};
 	});
 
@@ -43,7 +68,7 @@ export default function Titlebar() {
 								cx="11"
 								cy="11"
 								r="6"
-								fill={document.hasFocus() ? "#FF6058" : "#454545"}
+								fill={isFocused ? "#FF6058" : "#454545"}
 							/>
 							<line
 								className="control-iconsMac"
@@ -80,7 +105,12 @@ export default function Titlebar() {
 							viewBox="0 0 20 32"
 							fill="none"
 						>
-							<circle cx="11" cy="11" r="6" fill="#FFBD2E" />
+							<circle
+								cx="11"
+								cy="11"
+								r="6"
+								fill={isFocused ? "#FFBD2E" : "#454545"}
+							/>
 							<line
 								className="control-iconsMac"
 								x1="8"
@@ -108,7 +138,12 @@ export default function Titlebar() {
 							viewBox="0 0 20 32"
 							fill="none"
 						>
-							<circle cx="11" cy="11" r="6" fill="#29CA41" />
+							<circle
+								cx="11"
+								cy="11"
+								r="6"
+								fill={isFocused ? "#29CA41" : "#454545"}
+							/>
 							<line
 								className="control-iconsMac"
 								x1="8.25"

@@ -1,18 +1,21 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, shell } = require("electron");
+const { app, BrowserWindow, shell, Menu } = require("electron");
 const config = require("electron-json-config");
 const path = require("path");
 require("@electron/remote/main").initialize();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-let isDev = true;
+let isDev = false;
 
 function createWindow() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
 		width: 800,
 		height: 675,
+		toolbar: false,
+		"skip-taskbar": true,
+		"auto-hide-menu-bar": true,
 		frame: config.get("titlebar") === "native" ? true : false,
 		minWidth: 800,
 		minHeight: 600,
@@ -30,7 +33,94 @@ function createWindow() {
 		},
 	});
 
-	mainWindow.removeMenu();
+	const isMac = process.platform === "darwin";
+
+	const template = [
+		// { role: 'appMenu' }
+		...(isMac
+			? [
+					{
+						label: app.name,
+						submenu: [
+							{ role: "about" },
+							{ type: "separator" },
+							{ role: "services" },
+							{ type: "separator" },
+							{ role: "hide" },
+							{ role: "hideothers" },
+							{ role: "unhide" },
+							{ type: "separator" },
+							{ role: "quit" },
+						],
+					},
+			  ]
+			: []),
+		// { role: 'fileMenu' }
+		{
+			label: "File",
+			submenu: [isMac ? { role: "close" } : { role: "quit" }],
+		},
+		// { role: 'editMenu' }
+		{
+			label: "Edit",
+			submenu: [
+				{ role: "undo" },
+				{ role: "redo" },
+				{ type: "separator" },
+				{ role: "cut" },
+				{ role: "copy" },
+				{ role: "paste" },
+				...(isMac
+					? [
+							{ role: "pasteAndMatchStyle" },
+							{ role: "delete" },
+							{ role: "selectAll" },
+							{ type: "separator" },
+							{
+								label: "Speech",
+								submenu: [{ role: "startSpeaking" }, { role: "stopSpeaking" }],
+							},
+					  ]
+					: [{ role: "delete" }, { type: "separator" }, { role: "selectAll" }]),
+			],
+		},
+		// { role: 'viewMenu' }
+		{
+			label: "View",
+			submenu: [{ role: "reload" }],
+		},
+		// { role: 'windowMenu' }
+		{
+			label: "Window",
+			submenu: [
+				{ role: "minimize" },
+				{ role: "zoom" },
+				...(isMac
+					? [
+							{ type: "separator" },
+							{ role: "front" },
+							{ type: "separator" },
+							{ role: "window" },
+					  ]
+					: [{ role: "close" }]),
+			],
+		},
+		{
+			role: "help",
+			submenu: [
+				{
+					label: "Learn More",
+					click: async () => {
+						const { shell } = require("electron");
+						await shell.openExternal("https://electronjs.org");
+					},
+				},
+			],
+		},
+	];
+
+	const menu = Menu.buildFromTemplate(template);
+	Menu.setApplicationMenu(menu);
 
 	// and load the index.html of the app.
 	// DISABLE ON BUNDLE
@@ -53,7 +143,9 @@ function createWindow() {
 	});
 
 	// Open the DevTools.
-	mainWindow.webContents.openDevTools({ detach: true });
+	if (isDev) {
+		mainWindow.openDevTools({ detach: true });
+	}
 
 	// Emitted when the window is closed.
 	mainWindow.on("closed", () => {
