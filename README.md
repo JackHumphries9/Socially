@@ -64,6 +64,18 @@ git clone https://github.com/JackHumphries9/Socially.git
 npm install
 ```
 
+If you are going to develop this project, change line 6 in the package.json to:
+
+```json
+	"main": "src/electron.js",
+```
+
+and in the `src/electron.js` file, make sure that you set `isDev` to true (I will be fixing this):
+
+```javascript
+let isDev = true;
+```
+
 To run this project, you need to run the React server in one terminal:
 
 ```sh
@@ -74,6 +86,22 @@ And then run the electron app:
 
 ```sh
 npm run electron
+```
+
+This repo contains two scripts (these scripts have been used on MacOS but should work on Linux):
+
+The build script executed by:
+
+```sh
+./build.sh
+```
+
+will build the React project then copy the `src/electron.js` and `src/preload.js` files over into the build folder. From there, electron-builder is ran to compile for all platforms (this may error out on Linux due to MacOS apps not being able to be compiled).
+
+The cleanup script executed by:
+
+```sh
+./cleanup.sh
 ```
 
 <!-- Releses -->
