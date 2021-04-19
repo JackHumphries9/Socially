@@ -67,7 +67,7 @@ npm install
 If you are going to develop this project, change line 6 in the package.json to:
 
 ```json
-	"main": "src/electron.js",
+"main": "src/electron.js",
 ```
 
 and in the `src/electron.js` file, make sure that you set `isDev` to true (I will be fixing this):
