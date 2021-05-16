@@ -4,6 +4,8 @@ const os = require("os");
 
 console.log("Config file located at: " + config.file());
 
+// TODO: Rewrite this file using IPC rather than remote
+
 contextBridge.exposeInMainWorld("socially", {
 	winControls: {
 		close() {
