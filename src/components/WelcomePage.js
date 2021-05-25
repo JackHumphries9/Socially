@@ -11,6 +11,7 @@ export default function WelcomePage(props) {
 	});
 
 	const [socials, setSocials] = useState(socialsT);
+
 	return (
 		<div className="setup">
 			<h1>Welcome to Socially!</h1>

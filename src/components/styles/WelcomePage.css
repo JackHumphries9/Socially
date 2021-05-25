@@ -18,3 +18,12 @@
 		transform: translateY(0px);
 	}
 }
+
+.social-confirm-btn {
+	position: absolute;
+	bottom: 25px;
+	right: 25%;
+	left: 50%;
+	margin-left: -50%;
+	width: 100vw;
+}

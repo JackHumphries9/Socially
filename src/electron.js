@@ -18,6 +18,8 @@ function createWindow() {
 		minWidth: 800,
 		minHeight: 600,
 		backgroundColor: "#1A2933",
+		fullscreenable: false,
+		fullscreen: false,
 		icon: __dirname + `/src/assets/icons/app-icons/icon.icns`,
 		webPreferences: {
 			devTools: isDev,

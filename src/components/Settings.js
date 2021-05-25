@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { toast } from "react-toastify";
 import "./styles/Settings.css";
 
 /* eslint-disable */
@@ -22,9 +23,37 @@ export default function Settings(props) {
 											console.log("before:" + obj.isEnabled);
 
 											if (obj.isEnabled) {
+												toast.info(
+													`${
+														obj.name.charAt(0).toUpperCase() + obj.name.slice(1)
+													} is now disabled!`,
+													{
+														position: "bottom-right",
+														autoClose: 3000,
+														hideProgressBar: false,
+														closeOnClick: true,
+														pauseOnHover: true,
+														draggable: true,
+														progress: undefined,
+													}
+												);
 												props.setSocials[obj.name](false);
 												socially.appdata.setEnabled(obj.name, false);
 											} else {
+												toast.info(
+													`${
+														obj.name.charAt(0).toUpperCase() + obj.name.slice(1)
+													} is now enabled!`,
+													{
+														position: "bottom-right",
+														autoClose: 3000,
+														hideProgressBar: false,
+														closeOnClick: true,
+														pauseOnHover: true,
+														draggable: true,
+														progress: undefined,
+													}
+												);
 												props.setSocials[obj.name](true);
 												socially.appdata.setEnabled(obj.name, true);
 											}

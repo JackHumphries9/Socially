@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { toast } from "react-toastify";
 import "./styles/InitialPage.css";
 
 export default function InitialPage(props) {
+	useEffect(() => {
+		if (props.isActive) {
+			toast.dark("Socially is now setup!", {
+				position: "bottom-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+		}
+	}, []);
+
 	return (
 		<div className={props.isActive ? "fade-in" : "fade-in hidden"}>
 			<h1 className="settings fade-in-setup">Welcome to Socially!</h1>
