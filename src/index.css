@@ -1,0 +1,27 @@
+/* Basic styling */
+* {margin: 0; padding: 0; border: 0; vertical-align: baseline;}
+html {box-sizing: border-box;}
+*, *:before, *:after {box-sizing: inherit;}
+html, body {height: 100%; width:100%; padding:0; margin: 0;}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #1A2933;
+}
+
+h1 {
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+p {
+  margin-top: 10px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Styling of window frame and titlebar */
+body {
+  border: 1px solid #1A2933;
+  overflow-y: hidden;
+}

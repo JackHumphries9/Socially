@@ -1,0 +1,91 @@
+.main {
+	height: 100vh;
+	overflow-x: auto;
+	padding-left: 59px;
+	background-color: #f1f1f1;
+}
+
+.webview {
+	height: calc(100vh - 32px);
+	transition: 0.2s;
+	z-index: 500;
+}
+
+.webviewNative {
+	height: 100vh;
+	z-index: 500;
+}
+
+.hidden {
+	display: none;
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+.fade-in {
+	animation: fadein 1s;
+}
+
+.fade-out {
+	animation: fadeout 1s;
+}
+
+.offlineView {
+	z-index: 1;
+	height: calc(100vh - 32px);
+	background-color: #f1f1f1;
+	position: fixed;
+	width: 100% !important;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.offlineViewNative {
+	z-index: 1;
+	height: calc(100vh - 32px);
+	background-color: #f1f1f1;
+	position: fixed;
+	width: 100% !important;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.offlineText {
+	color: #343434;
+	font-size: 1rem;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+	padding-right: 5vw;
+	padding-bottom: 5vh;
+}
+
+.offlineIcon {
+	max-height: 64px;
+}

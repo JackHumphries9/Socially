@@ -1,0 +1,51 @@
+{
+	"appId": "com.jackhumphries.socially",
+	"productName": "Socially",
+	"files": ["./build/**", "node_modules/**/*"],
+	"directories": {
+		"buildResources": "assets"
+	},
+	"copyright": "Copyright © 2021 JackHumphries",
+	"mac": {
+		"target": ["dmg"],
+		"icon": "./src/assets/icons/app-icons/mac/icon.icns",
+		"category": "public.app-category.social-networking",
+		"provisioningProfile": "Socially_Release.provisionprofile"
+	},
+	"dmg": {
+		"iconSize": 100,
+		"contents": [
+			{
+				"x": 145,
+				"y": 220
+			},
+			{
+				"x": 400,
+				"y": 220,
+				"type": "link",
+				"path": "/Applications"
+			}
+		]
+	},
+	"mas": {
+		"hardenedRuntime": false,
+		"type": "distribution",
+		"category": "public.app-category.social-networking",
+		"entitlements": "./src/entitlements/entitlements.mas.plist",
+		"entitlementsInherit": "./src/entitlements/entitlements.mas.inherit.plist"
+	},
+	"linux": {
+		"icon": "./src/assets/icons/app-icons/png/256x256.png",
+		"target": ["AppImage", "deb", "snap", "zip"]
+	},
+	"win": {
+		"icon": "./src/assets/icons/app-icons/win/icon.ico",
+		"target": "NSIS"
+	},
+	"nsis": {
+		"oneClick": false,
+		"createDesktopShortcut": "always",
+		"deleteAppDataOnUninstall": true,
+		"installerIcon": "./src/assets/icons/app-icons/win/icon.ico"
+	}
+}

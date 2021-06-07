@@ -1,0 +1,123 @@
+#titlebarMac {
+	background: #1a2933;
+	display: block;
+	position: fixed;
+	height: 32px;
+	width: calc(100% - 2px);
+	z-index: 10000;
+}
+
+.maximizedMac #titlebarMac {
+	width: 100%;
+	padding: 0;
+}
+
+#titlebarMac {
+	padding: 4px;
+}
+
+#titlebarMac #drag-region {
+	width: 100%;
+	height: 100%;
+	-webkit-app-region: drag;
+}
+
+#titlebarMac {
+	color: #fff;
+}
+
+#titlebarMac #drag-region {
+	display: grid;
+	grid-template-columns: auto 138px;
+}
+
+#window-titleMac {
+	display: flex;
+	align-items: center;
+	margin-left: 8px;
+	overflow: hidden;
+	font-family: "Segoe UI", sans-serif;
+	font-size: 12px;
+	text-align: center;
+	width: 100vh;
+	padding-left: 58%;
+}
+
+.maximizedMac #window-titleMac {
+	margin-left: 12px;
+}
+
+#window-titleMac span {
+	white-space: nowrap;
+	line-height: 1.5;
+}
+
+#window-controlsMac {
+	display: grid;
+	grid-template-columns: repeat(3, 20px);
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+#window-controlsMac {
+	-webkit-app-region: no-drag;
+}
+
+#window-controlsMac .buttonMac {
+	grid-row: 1 / span 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+@media (-webkit-device-pixel-ratio: 1.5),
+	(device-pixel-ratio: 1.5),
+	(-webkit-device-pixel-ratio: 2),
+	(device-pixel-ratio: 2),
+	(-webkit-device-pixel-ratio: 3),
+	(device-pixel-ratio: 3) {
+	#window-controlsMac .iconMac {
+		width: 10px;
+		height: 10px;
+	}
+}
+
+#window-controlsMac .buttonMac {
+	user-select: none;
+}
+
+#min-buttonMac {
+	grid-column: 2;
+}
+#max-buttonMac,
+#restore-buttonMac {
+	grid-column: 3;
+}
+#close-buttonMac {
+	grid-column: 1;
+}
+
+#restore-buttonMac {
+	display: none !important;
+}
+
+.maximizedMac #restore-buttonMac {
+	display: flex !important;
+}
+
+.maximizedMac #max-buttonMac {
+	display: none;
+}
+
+#window-controlsMac .control-iconsMac {
+	visibility: hidden;
+	opacity: 0;
+}
+
+#window-controlsMac:hover .control-iconsMac {
+	visibility: visible;
+	opacity: 1;
+}
