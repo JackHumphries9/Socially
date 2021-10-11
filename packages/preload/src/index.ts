@@ -1,11 +1,30 @@
-import {contextBridge} from 'electron';
-
-const apiKey = 'electron';
+import { contextBridge, ipcRenderer } from "electron";
+const apiKey = "electron";
 /**
  * @see https://github.com/electron/electron/issues/21437#issuecomment-573522360
  */
 const api: ElectronApi = {
   versions: process.versions,
+  isFullscreen: false,
+  minimize: () => {
+    ipcRenderer.send("minimize");
+  },
+  maximize: () => {
+    ipcRenderer.send("maximize");
+  },
+  close: () => {
+    ipcRenderer.send("close");
+  },
+  restore: () => {
+    ipcRenderer.send("restore");
+  },
+  getPlatform: () => {
+    return process.platform;
+  },
+  isMaximised: async () => {
+    const r: Promise<boolean> = await ipcRenderer.invoke("isMaximized");
+    return r;
+  },
 };
 
 /**
