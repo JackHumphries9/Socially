@@ -126,3 +126,7 @@
 .macos {
   display: none;
 }
+
+.hidden {
+  display: none;
+}

@@ -5,7 +5,6 @@ const apiKey = "electron";
  */
 const api: ElectronApi = {
   versions: process.versions,
-  isFullscreen: false,
   minimize: () => {
     ipcRenderer.send("minimize");
   },
@@ -23,6 +22,10 @@ const api: ElectronApi = {
   },
   isMaximised: async () => {
     const r: Promise<boolean> = await ipcRenderer.invoke("isMaximized");
+    return r;
+  },
+  isFullscreen: async () => {
+    const r: Promise<boolean> = await ipcRenderer.invoke("isFullscreen");
     return r;
   },
 };

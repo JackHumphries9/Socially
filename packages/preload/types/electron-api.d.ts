@@ -7,13 +7,13 @@ enum SPlatform {
 
 interface ElectronApi {
   readonly versions: Readonly<NodeJS.ProcessVersions>;
-  isFullscreen: boolean;
   minimize: VoidFunction;
   maximize: VoidFunction;
   close: VoidFunction;
   restore: VoidFunction;
   getPlatform: () => string;
   isMaximised: () => Promise<boolean>;
+  isFullscreen: () => Promise<boolean>;
 }
 
 declare interface Window {

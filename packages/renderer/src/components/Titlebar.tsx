@@ -1,16 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import "./styles/Titlebar.css";
 
-const Titlebar: React.FC = () => {
-  const [isFullScreen, setFullscreen] = useState(false);
+interface TitlebarProps {
+  isFullscreen: boolean;
+  setFullscreen: Dispatch<SetStateAction<boolean>>;
+}
+
+const Titlebar: React.FC<TitlebarProps> = (props: TitlebarProps) => {
   const [isMaximized, setMaximized] = useState(false);
 
+  // Add handler to detect maximizes or fullscreeens
   useEffect(() => {
     async function handleResize() {
       if (await window.electron.isMaximised()) {
         setMaximized(true);
       } else {
         setMaximized(false);
+      }
+
+      if (await window.electron.isFullscreen()) {
+        props.setFullscreen(true);
+      } else {
+        props.setFullscreen(false);
       }
     }
     window.addEventListener("resize", handleResize);
@@ -21,12 +32,18 @@ const Titlebar: React.FC = () => {
   });
 
   return (
-    <header className={"titlebar " + (isMaximized ? `maximized` : ``)}>
+    <header
+      className={
+        "titlebar " +
+        (isMaximized ? `maximized` : ``) +
+        (props.isFullscreen ? `hidden` : ``)
+      }
+    >
       <div className="drag-region"></div>
       <div
         className={
           "window-controls " +
-          (window.electron.getPlatform() == "darwin" ? "maco" : "")
+          (window.electron.getPlatform() == "darwin" ? "macos" : "")
         }
       >
         <div

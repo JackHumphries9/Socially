@@ -3,6 +3,7 @@
   overflow-x: auto;
   padding-left: 59px;
   background-color: #f1f1f1;
+  color: black;
 }
 
 .webview {
@@ -90,7 +91,7 @@
   max-height: 64px;
 }
 
-.content {
+.contentTitlebar {
   height: calc(100% - 32px);
   padding-top: 32px;
   overflow-y: auto;

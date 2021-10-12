@@ -17,18 +17,19 @@ if (!isSingleInstance) {
 
 app.disableHardwareAcceleration();
 
+app.setAboutPanelOptions({
+  applicationName: "Socially",
+  applicationVersion: "2.0",
+  credits: "Jack Humphries",
+  authors: ["Jack Humphries"],
+  website: "https://getsocially.app",
+});
+
 // Install "Vue.js devtools"
 if (import.meta.env.MODE === "development") {
   app
     .whenReady()
     .then(() => import("electron-devtools-installer"))
-    .then(({ default: installExtension, VUEJS3_DEVTOOLS }) =>
-      installExtension(VUEJS3_DEVTOOLS, {
-        loadExtensionOptions: {
-          allowFileAccess: true,
-        },
-      })
-    )
     .catch((e) => console.error("Failed install extension:", e));
 }
 
@@ -90,6 +91,11 @@ const createWindow = async () => {
   ipcMain.handle("isMaximized", (e: IpcMainInvokeEvent) => {
     const isMax = mainWindow?.isMaximized();
     return isMax;
+  });
+
+  ipcMain.handle("isFullscreen", (e: IpcMainInvokeEvent) => {
+    const isFull = mainWindow?.isFullScreen();
+    return isFull;
   });
 
   await mainWindow.loadURL(pageUrl);
