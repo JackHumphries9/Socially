@@ -17,9 +17,7 @@ const App: React.FC = () => {
                 isFullscreen={isFullscreen}
                 setFullscreen={setFullscreen}
             />
-            <main
-                className={"content " + (isFullscreen ? "" : "contentTitlebar")}
-            >
+            <main className={isFullscreen ? "" : "contentTitlebar"}>
                 <Sidebar
                     socials={Socials}
                     activeSocial={activeSocial}
@@ -27,7 +25,7 @@ const App: React.FC = () => {
                     disabledSocials={disabledSocials}
                     setDisabledSocials={setDisabledSocials}
                 />
-                <div>CONTENT</div>
+                <div className="webviews">CONTENT</div>
             </main>
         </div>
     );

@@ -1,0 +1,80 @@
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+    color: #f1f1f1;
+    padding-left: 19px;
+}
+
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    filter: invert(0.7);
+    display: block;
+    transition: 0.2s;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+    filter: invert(0.9);
+}
+
+a.social-active {
+    color: #000;
+    font-weight: bold;
+    border-left: solid;
+    border-color: #000;
+    filter: invert(1);
+}
+
+.sidebar-btn {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes sbizi {
+    0% {
+        transform: scale(0);
+        height: 0px;
+        padding-top: 0px;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+    }
+    75% {
+        transform: scale(1.15);
+        height: 50px;
+    }
+    100% {
+        transform: scale(1);
+        height: 45px;
+    }
+}
+
+.sidebar-icon-zoomin {
+    animation: sbizi 0.51s forwards;
+}
+
+@keyframes sbizo {
+    from {
+        transform: scale(1);
+        height: 45px;
+    }
+    to {
+        transform: scale(0);
+        height: 0px;
+        padding-top: 0px;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        display: none;
+    }
+}
+
+.sidebar-icon-zoomout {
+    animation: sbizo 0.51s forwards;
+}

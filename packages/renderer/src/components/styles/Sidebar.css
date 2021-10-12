@@ -1,0 +1,10 @@
+.sidebar {
+    height: 100%;
+    width: 60px;
+    position: fixed;
+    /*z-index: 1;*/
+    left: 0;
+    background: #1a2933;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
