@@ -1,0 +1,9 @@
+.webview {
+	transition: 0.2s;
+	z-index: 500;
+	height: 100vh;
+}
+
+.webviews {
+	height: 100vh;
+}
